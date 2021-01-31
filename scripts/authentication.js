@@ -44,7 +44,7 @@ signupBTN.addEventListener("click", async (e) => {
         password: password,
       }),
     });
-    if (token.status != 200 || token.status != 201) throw new Error();
+    if (token.status != 200 && token.status != 201) throw new Error();
     token = await token.text();
     localStorage.setItem("token", token);
     window.location = "main.html";

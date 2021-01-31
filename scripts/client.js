@@ -25,32 +25,55 @@ async function getNotes() {
     method: "GET",
     headers: {
       "x-auth-token": localStorage.getItem("token"),
+      "Content-Type": "application/json",
     },
   });
 
   noteIds = await noteIds.json();
   let indx = 0;
-  for (let noteId of noteIds.notes) {
-    noteId = noteId.id;
+  for (let note of noteIds.notes) {
+    let bodyId = note.bodyId;
+    let titleId = note.titleId;
     let div = document.createElement("div");
-    let text = document.createElement("textarea");
+    let textTitle = document.createElement("input");
+    let textBody = document.createElement("textarea");
     let btn = document.createElement("button");
     let btnShare = document.createElement("button");
-    text.style.display = "block";
+
+    textTitle.style.display = "block";
+    textBody.style.display = "block";
+
     btn.innerText = "Edit";
+    btn.classList.add("btn");
+    btnShare.classList.add("btn");
+    btn.classList.add("btn-outline-dark");
+    btnShare.classList.add("btn-outline-dark");
     btnShare.innerText = "Share";
     btnShare.id = String(indx);
+
+    textBody.classList.add("form-control");
+    textTitle.classList.add("form-control");
+
     btn.addEventListener("click", (e) => {
-      let doc = connection.get("notes", noteId);
+      let docBody = connection.get("notes", bodyId);
       //console.log(noteId);
-      doc.subscribe(function (err) {
+      docBody.subscribe(function (err) {
         if (err) throw err;
         let text = document.getElementById("addNoteTextArea");
-        let binding = new StringBinding(text, doc, ["content"]);
+        let binding = new StringBinding(text, docBody, ["content"]);
+        binding.setup();
+      });
+      let docTitle = connection.get("notes", titleId);
+      //console.log(noteId);
+      docTitle.subscribe(function (err) {
+        if (err) throw err;
+        let text = document.getElementById("addNoteTitle");
+        let binding = new StringBinding(text, docTitle, ["content"]);
         binding.setup();
       });
       $("#addNoteModal").modal();
     });
+
     btnShare.addEventListener("click", async () => {
       let link = await fetch(backend + "note/note/callobration", {
         method: "POST",
@@ -67,19 +90,29 @@ async function getNotes() {
       $("#sharedLinkModal").modal();
     });
     //text.innerText = noteId;
-    text.readOnly = true;
+    textBody.readOnly = true;
+    textTitle.readOnly = true;
     div.style.border = "1px solid black";
     div.style.margin = "10px";
     div.style.padding = "10px";
-    div.appendChild(text);
+    div.appendChild(textTitle);
+    div.appendChild(textBody);
     div.appendChild(btn);
     div.appendChild(btnShare);
     notesCont.appendChild(div);
     //console.log("dds");
-    let doc = connection.get("notes", noteId);
-    doc.subscribe(function (err) {
+    let docBody = connection.get("notes", bodyId);
+    //console.log(noteId);
+    docBody.subscribe(function (err) {
       if (err) throw err;
-      let binding = new StringBinding(text, doc, ["content"]);
+      let binding = new StringBinding(textBody, docBody, ["content"]);
+      binding.setup();
+    });
+    let docTitle = connection.get("notes", titleId);
+    //console.log(noteId);
+    docTitle.subscribe(function (err) {
+      if (err) throw err;
+      let binding = new StringBinding(textTitle, docTitle, ["content"]);
       binding.setup();
     });
     indx++;
@@ -91,14 +124,24 @@ addNoteBTN.addEventListener("click", async () => {
     method: "POST",
     headers: {
       "x-auth-token": localStorage.getItem("token"),
+      "Content-Type": "application/json",
     },
   });
-  noteId = await noteId.text();
-  let text = document.getElementById("addNoteTextArea");
-  let doc = connection.get("notes", noteId);
-  doc.subscribe(function (err) {
+  let note = await noteId.json();
+  let docBody = connection.get("notes", note.bodyId);
+  //console.log(noteId);
+  docBody.subscribe(function (err) {
     if (err) throw err;
-    let binding = new StringBinding(text, doc, ["content"]);
+    let text = document.getElementById("addNoteTextArea");
+    let binding = new StringBinding(text, docBody, ["content"]);
+    binding.setup();
+  });
+  let docTitle = connection.get("notes", note.titleId);
+  //console.log(noteId);
+  docTitle.subscribe(function (err) {
+    if (err) throw err;
+    let text = document.getElementById("addNoteTitle");
+    let binding = new StringBinding(text, docTitle, ["content"]);
     binding.setup();
   });
   $("#addNoteModal").modal();

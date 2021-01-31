@@ -10,6 +10,12 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <style>
+      input,
+      textarea {
+        margin: 10px;
+      }
+    </style>
   </head>
   <body>
     <div class="row">
@@ -29,7 +35,10 @@
             <h5 class="modal-title">note</h5>
           </div>
           <div class="modal-body">
-            <textarea id="addNoteTextArea"></textarea>
+            <label for="">title</label>
+            <input id="addNoteTitle" class="form-control" />
+            <label for="">body</label>
+            <textarea id="addNoteTextArea" class="form-control"></textarea>
           </div>
           <div class="modal-footer">
             <button

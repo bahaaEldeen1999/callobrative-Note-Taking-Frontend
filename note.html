@@ -10,10 +10,20 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <style>
+      input,
+      textarea {
+        margin: 10px auto;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <textarea name="" id="note"></textarea>
+    <h1 class="text-center">Callobrative Notes</h1>
+    <div class="container text-center">
+      <label for="">title</label>
+      <input name="" id="titleNote" class="form-control" />
+      <label for="">Body</label>
+      <textarea name="" id="bodyNote" class="form-control"></textarea>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
