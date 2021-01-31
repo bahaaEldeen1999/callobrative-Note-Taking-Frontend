@@ -1,0 +1,16 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "reconnecting-websocket": "^4.4.0",
+    "sharedb": "^1.6.0",
+    "sharedb-string-binding": "^1.0.0"
+  }
+}

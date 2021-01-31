@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Callobrative Notes</title>
+    <style>
+      .col-md-6 {
+        text-align: center;
+      }
+      input {
+        width: 70% !important;
+        margin: 5px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-6">
+        <h1>login</h1>
+        <label for="userLogin">username</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          id="userLogin"
+          placeholder="username"
+        />
+        <label for="passLogin">password</label>
+        <input
+          class="form-control"
+          type="password"
+          required
+          id="passLogin"
+          placeholder="password"
+        />
+        <button class="btn btn-outline-dark" id="loginBTN">login</button>
+      </div>
+      <div class="col-md-6">
+        <h1>Signup</h1>
+        <label for="userSignup">username</label>
+        <input
+          class="form-control"
+          type="text"
+          required
+          id="userSignup"
+          placeholder="username"
+        />
+        <label for="passSignup">password</label>
+        <input
+          type="password"
+          required
+          id="passSignup"
+          placeholder="password"
+          class="form-control"
+        />
+        <button class="btn btn-outline-dark" id="signupBTN">login</button>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/authentication.js"></script>
+  </body>
+</html>
