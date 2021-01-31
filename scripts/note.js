@@ -7,7 +7,7 @@ var StringBinding = require("sharedb-string-binding");
 
 // Open WebSocket connection to ShareDB server
 var ReconnectingWebSocket = require("reconnecting-websocket");
-var socket = new ReconnectingWebSocket("ws://localhost:3000");
+var socket = new ReconnectingWebSocket("wss://note-callobration.herokuapp.com");
 var connection = new sharedb.Connection(socket);
 
 let docTitle = connection.get("notes", titleId);
