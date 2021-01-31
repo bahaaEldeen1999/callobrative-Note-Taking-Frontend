@@ -8,13 +8,13 @@ var StringBinding = require("sharedb-string-binding");
 
 // Open WebSocket connection to ShareDB server
 var ReconnectingWebSocket = require("reconnecting-websocket");
-var socket = new ReconnectingWebSocket("ws://localhost:3000");
+var socket = new ReconnectingWebSocket("wss://note-callobration.herokuapp.com");
 var connection = new sharedb.Connection(socket);
 
 const logoutBTN = document.querySelector("#logoutBTN");
 const addNoteBTN = document.querySelector("#addNoteBTN");
 const notesCont = document.querySelector("#notes");
-const backend = "http://localhost:3000/api/";
+const backend = "https://note-callobration.herokuapp.com/api/";
 logoutBTN.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.removeItem("token");

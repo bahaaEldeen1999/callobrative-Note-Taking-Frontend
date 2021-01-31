@@ -1,6 +1,6 @@
 const loginBTN = document.querySelector("#loginBTN");
 const signupBTN = document.querySelector("#signupBTN");
-const backend = "http://localhost:3000/api/";
+const backend = "https://note-callobration.herokuapp.com/api/";
 if (localStorage.getItem("token")) {
   window.location = "main.html";
 }
