@@ -28,7 +28,7 @@
 
 ## project setup
 
-> git clone https://github.com/bahaaEldeen1999/callobrative-Note-Taking-Frontend<br>
+> git clone https://github.com/bahaaEldeen1999/callobrative-Note-Taking-Frontend.git<br>
 > cd Callobrative-Note-Taking-Frontend<br>
 > run live server using any hosting tool
 
